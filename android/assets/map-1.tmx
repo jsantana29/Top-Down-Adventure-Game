@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="240" height="13" tilewidth="32" tileheight="32" nextobjectid="39">
+ <tileset firstgid="1" name="tiles" tilewidth="30" tileheight="30" tilecount="100" columns="10">
+  <image source="tiles.png" width="300" height="300"/>
+ </tileset>
+ <layer name="Background" width="240" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20KP6AAAAAAAAAAAAAAAAC+BjDAAAE=
+  </data>
+ </layer>
+ <layer name="Wall" width="240" height="13">
+  <data encoding="base64" compression="zlib">
+   eJzt2jEKwCAQRUHB+985fZps1I8szIBgZfdQ0TnGmOEBZKz09adR/ULOar/VNfQLOV/tVc7E+oU7TrSnX7jD/gt9uf9CX/qFvvQLfe28/77np9YHatJ96Rdykn35PwlZ6b/P+oWcBzJ9AUU=
+  </data>
+ </layer>
+ <layer name="Ground" width="240" height="13">
+  <data encoding="base64" compression="zlib">
+   eJzt2EEKhDAQRNHS+x/alSDyp+MitmT4gQdSIQ0uiqDJ+2uT9IpAthfOM/e1XfZH8yXNEcioh9WZFOdovqQ5All1z56LZthfqVcg24u9aob9lXoFMu9faQ2BzO9faQ2B7Mn/Z5phf6Vegcz7V1pDIHvS38Cz/ZV6BbJRf3+xv1KvQDb6/h3tX2fTfElzdKyv31H6VwfqBwvz
+  </data>
+ </layer>
+ <objectgroup name="Wall">
+  <object id="11" x="0" y="0" width="800" height="32"/>
+  <object id="14" x="768" y="32" width="32" height="384"/>
+  <object id="15" x="736" y="352" width="32" height="64"/>
+  <object id="16" x="0" y="384" width="736" height="32"/>
+  <object id="17" x="0" y="384" width="32"/>
+  <object id="19" x="0" y="32" width="32" height="352"/>
+  <object id="20" x="416" y="32" width="32" height="96"/>
+  <object id="21" x="416" y="96" height="32"/>
+  <object id="24" x="224" y="96" width="192" height="32"/>
+  <object id="25" x="449" y="33" width="128" height="32"/>
+  <object id="31" x="544" y="69" width="32" height="256"/>
+  <object id="32" x="513" y="290" width="32" height="32"/>
+  <object id="34" x="417" y="290" width="64" height="32"/>
+  <object id="36" x="416" y="163" width="32" height="128"/>
+  <object id="37" x="224" y="130" width="32" height="64"/>
+  <object id="38" x="259" y="161" width="160" height="32"/>
+ </objectgroup>
+</map>
