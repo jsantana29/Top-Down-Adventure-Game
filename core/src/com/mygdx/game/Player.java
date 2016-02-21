@@ -2,6 +2,7 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
@@ -44,27 +45,32 @@ public class Player {
         pCollision = new Rectangle(posX,posY,spW,spH);
     }
 
-    public void checkInput(float DT){
+    public void checkInput(float DT, OrthographicCamera gamecam){
         //boolean input = Gdx.input.isKeyPressed(Input.Keys.RIGHT);
 
             if(Gdx.input.isKeyPressed(Input.Keys.D)) {
                 move(300, 0, DT);
-                collisionReaction(-300,0,DT);
+                collisionReaction(-300, 0, DT);
+                //gamecam.position.set(position);
+
             }
 
             if(Gdx.input.isKeyPressed(Input.Keys.W)) {
                 move(0, 300, DT);
-                collisionReaction(0,-300,DT);
+                collisionReaction(0, -300, DT);
+                //gamecam.position.set(position);
             }
 
             if(Gdx.input.isKeyPressed(Input.Keys.A)) {
                 move(-300, 0, DT);
-                collisionReaction(300,0,DT);
+                collisionReaction(300, 0, DT);
+                //gamecam.position.set(position);
             }
 
             if(Gdx.input.isKeyPressed(Input.Keys.S)) {
                 move(0, -300, DT);
                 collisionReaction(0,300,DT);
+                //gamecam.position.set(position);
             }
         }
 

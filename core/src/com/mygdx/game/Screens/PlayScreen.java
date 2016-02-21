@@ -12,6 +12,7 @@ import com.mygdx.game.Abstract.ObjectCollision;
 import com.mygdx.game.Metaphor;
 import com.mygdx.game.Objects.Wall;
 import com.mygdx.game.Player;
+import com.mygdx.game.Scenes.Hud;
 
 /**
  * Created by Jean on 2/16/2016.
@@ -21,8 +22,9 @@ public class PlayScreen implements Screen {
     private Player p1;
     private ObjectCollision collsionObjects;
     private Wall wall;
+    private Hud hud;
 
-    private OrthographicCamera gamecam;
+    public OrthographicCamera gamecam;
     private Viewport gameport;
 
     float currentPosX = 0;
@@ -34,6 +36,7 @@ public class PlayScreen implements Screen {
         p1 = new Player(currentPosX,currentPosY);
         gamecam = new OrthographicCamera();
         gameport = new FitViewport(Metaphor.V_WIDTH,Metaphor.V_HEIGHT,gamecam);
+        hud = new Hud(game.batch);
     }
 
     @Override
@@ -41,20 +44,35 @@ public class PlayScreen implements Screen {
 
     }
 
+    public void update(float dt){
+        p1.checkInput(dt, gamecam);
+        //gamecam.update();
+    }
+
     @Override
     public void render(float delta) {
         float DT = Gdx.graphics.getDeltaTime();
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+        update(DT);
+
+        Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		p1.checkInput(DT);
-		//System.out.println(p1.getPosX()+" "+p1.getPosY());
+
+        //System.out.println(p1.getPosX()+" "+p1.getPosY());
+        System.out.println(hud.stage.getViewport().getCamera().position);
+        System.out.println(gamecam.position);
+
         game.batch.setProjectionMatrix(gamecam.combined);
         gamecam.position.set(p1.getPosition());
         gamecam.update();
+
 		game.batch.begin();
 		game.batch.draw(collsionObjects.getImg(), collsionObjects.getPosX(), collsionObjects.getPosY());
-		game.batch.draw(p1.getSpr(), p1.getPosX(), p1.getPosY());
+        game.batch.draw(p1.getSpr(), p1.getPosX(), p1.getPosY());
 		game.batch.end();
+
+        game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
+        hud.stage.draw();
+
     }
 
     @Override
