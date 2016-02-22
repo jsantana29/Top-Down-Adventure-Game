@@ -45,21 +45,16 @@ public class PlayScreen implements Screen {
     }
 
     public void update(float dt){
-        p1.checkInput(dt, gamecam);
-        //gamecam.update();
+        p1.checkInput(dt);
+
     }
 
     @Override
     public void render(float delta) {
-        float DT = Gdx.graphics.getDeltaTime();
-        update(DT);
+        update(delta);
 
         Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        //System.out.println(p1.getPosX()+" "+p1.getPosY());
-        System.out.println(hud.stage.getViewport().getCamera().position);
-        System.out.println(gamecam.position);
 
         game.batch.setProjectionMatrix(gamecam.combined);
         gamecam.position.set(p1.getPosition());

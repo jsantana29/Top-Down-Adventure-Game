@@ -18,7 +18,6 @@ public class Player {
     private static float posY;
 
     private ObjectCollision collisionObjects;
-    private com.mygdx.game.Objects.Wall wall;
 
     private Vector3 movement;
     private Vector3 position;
@@ -45,32 +44,26 @@ public class Player {
         pCollision = new Rectangle(posX,posY,spW,spH);
     }
 
-    public void checkInput(float DT, OrthographicCamera gamecam){
-        //boolean input = Gdx.input.isKeyPressed(Input.Keys.RIGHT);
+    public void checkInput(float DT){
 
             if(Gdx.input.isKeyPressed(Input.Keys.D)) {
                 move(300, 0, DT);
                 collisionReaction(-300, 0, DT);
-                //gamecam.position.set(position);
-
             }
 
             if(Gdx.input.isKeyPressed(Input.Keys.W)) {
                 move(0, 300, DT);
                 collisionReaction(0, -300, DT);
-                //gamecam.position.set(position);
             }
 
             if(Gdx.input.isKeyPressed(Input.Keys.A)) {
                 move(-300, 0, DT);
                 collisionReaction(300, 0, DT);
-                //gamecam.position.set(position);
             }
 
             if(Gdx.input.isKeyPressed(Input.Keys.S)) {
                 move(0, -300, DT);
                 collisionReaction(0,300,DT);
-                //gamecam.position.set(position);
             }
         }
 
