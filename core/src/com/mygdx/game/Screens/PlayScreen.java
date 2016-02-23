@@ -21,7 +21,6 @@ public class PlayScreen implements Screen {
     private Metaphor game;
     private Player p1;
     private ObjectCollision collsionObjects;
-    private Wall wall;
     private Hud hud;
 
     public OrthographicCamera gamecam;
@@ -45,26 +44,34 @@ public class PlayScreen implements Screen {
     }
 
     public void update(float dt){
+        //Checks for player input
         p1.checkInput(dt);
 
     }
 
     @Override
     public void render(float delta) {
+        //Updates anything that needs to be constantly checked
         update(delta);
 
+        //Clears the screen every frame
         Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        //The spritebatch focuses on only the dimensions of the gamecam
+        //Gamecam's position is set to follow player's position and updates position every frame
         game.batch.setProjectionMatrix(gamecam.combined);
         gamecam.position.set(p1.getPosition());
         gamecam.update();
 
+        //Spritebatch is opened and the games objects are being drawn to the screen before closing
 		game.batch.begin();
 		game.batch.draw(collsionObjects.getImg(), collsionObjects.getPosX(), collsionObjects.getPosY());
         game.batch.draw(p1.getSpr(), p1.getPosX(), p1.getPosY());
 		game.batch.end();
 
+        //Projection is set on the HUD's camera, which has the same dimensions as the gamecam
+        //HUD is drawn on the screen
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
 

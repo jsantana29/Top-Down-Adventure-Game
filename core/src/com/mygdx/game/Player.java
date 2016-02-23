@@ -45,7 +45,7 @@ public class Player {
     }
 
     public void checkInput(float DT){
-
+        //Checks wasd buttons on keyboard for input
             if(Gdx.input.isKeyPressed(Input.Keys.D)) {
                 move(300, 0, DT);
                 collisionReaction(-300, 0, DT);
@@ -69,17 +69,20 @@ public class Player {
 
 
     public boolean checkCollision(){
+        //Checks if player collides with a collideable object
         if (pCollision.overlaps(collisionObjects.getCollisions()))
             return true;
         return false;
     }
 
     public void collisionReaction(float x, float y, float DT){
+        //If player collides with a collideable object, player moves back 300*dt, thus cancelling out the movement
         if(checkCollision())
             move(x,y,DT);
     }
 
     public void move(float x,float y,float DT) {
+        //Moves player at a velocity of 300*dt in a given direction based on key
         movement.set(0, 0, 0);
         movement.add(x, y, 0);
         movement.scl(DT);

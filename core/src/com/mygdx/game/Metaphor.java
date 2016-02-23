@@ -22,12 +22,15 @@ public class Metaphor extends Game {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
+
+		//Program takes you straight to the play screen, where the gameplay is.
 		setScreen(new PlayScreen(this));
 
 	}
 
 	@Override
 	public void render () {
+		//Executes the render method from the screen the that is being used at the moment
 		super.render();
 
 	}

@@ -36,16 +36,20 @@ public class Hud {
         viewport = new FitViewport(Metaphor.V_WIDTH,Metaphor.V_HEIGHT, new OrthographicCamera());
         stage = new Stage(viewport,sb);
 
+        //Creates a table that holds all the labels we created
+        //This table goes inside our stage, which holds all the tables that make up the HUD
         Table table = new Table();
         table.top();
         table.setFillParent(true);
 
+        //Creating the labels
         countdownLabel = new Label(String.format("%03d",worldTimer),new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         scoreLabel = new Label(String.format("%06d",score),new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         timeLabel = new Label("TIME",new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         worldLabel = new Label("Asgard",new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         marioLabel = new Label("Player",new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
+        //Adding the labels inside of the table
         table.add(marioLabel).expandX().padTop(10);
         table.add(worldLabel).expandX().padTop(10);
         table.add(timeLabel).expandX().padTop(10);
@@ -53,6 +57,7 @@ public class Hud {
         table.add(scoreLabel).expandX();
         table.add(countdownLabel).expandX();
 
+        //adding the table inside the stage
         stage.addActor(table);
     }
 
