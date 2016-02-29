@@ -6,7 +6,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
+import com.mygdx.game.Abstract.MovingObjects;
 import com.mygdx.game.Abstract.ObjectCollision;
+import com.mygdx.game.Objects.Bullets;
 import com.mygdx.game.Objects.Wall;
 
 /**
@@ -16,8 +18,11 @@ public class Player {
 
     private static float posX;
     private static float posY;
+    private float spW;
+    private float spH;
 
     private ObjectCollision collisionObjects;
+    private MovingObjects movingObjects;
 
     private Vector3 movement;
     private Vector3 position;
@@ -34,14 +39,16 @@ public class Player {
 
         collisionObjects= new Wall();
 
-        Float spW = new Float(spr.getWidth());
-        Float spH = new Float(spr.getHeight());
+        spW = new Float(spr.getWidth());
+        spH = new Float(spr.getHeight());
 
         movement = new Vector3(0,0,0);
         position = new Vector3(x,y,0);
 
 
         pCollision = new Rectangle(posX,posY,spW,spH);
+        movingObjects = new Bullets();
+
     }
 
     public void checkInput(float DT){
@@ -64,6 +71,11 @@ public class Player {
             if(Gdx.input.isKeyPressed(Input.Keys.S)) {
                 move(0, -300, DT);
                 collisionReaction(0,300,DT);
+            }
+
+            if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
+                movingObjects.setMoving(true);
+                movingObjects.setLaunched(true);
             }
         }
 
@@ -110,5 +122,13 @@ public class Player {
 
     public Vector3 getPosition() {
         return position;
+    }
+
+    public float getSpW() {
+        return spW;
+    }
+
+    public float getSpH() {
+        return spH;
     }
 }

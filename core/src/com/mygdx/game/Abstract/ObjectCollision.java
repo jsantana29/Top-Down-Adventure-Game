@@ -25,7 +25,6 @@ public abstract class ObjectCollision {
 
     }
 
-    public abstract void setPos(float inputX, float inputY);
 
     public abstract Texture getImg();
 
@@ -34,4 +33,6 @@ public abstract class ObjectCollision {
     public abstract float getPosX();
 
     public abstract Rectangle getCollisions();
+
+    public abstract void dispose();
 }

@@ -40,4 +40,9 @@ public class Wall extends ObjectCollision {
     public Rectangle getCollisions() {
         return collision;
     }
+
+    @Override
+    public void dispose() {
+
+    }
 }
